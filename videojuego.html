@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=UTF-8>
+    </head>
+    <body>
+        <style>
+            body {
+                margin: 0; /* Margen 0 */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: url('./img/fondo.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                font-family: sans-serif;
+                font-size: 18px;
+                overflow: hidden;
+            }
+        </style>
+        <div style="position: relative;" id="parentDiv">
+            <p id="puntuacionContenedor" style="position: absolute;
+            z-index: 10;
+            color: white;
+            left: 10px;
+            top: 10px;
+            margin: 0;
+            display: none;
+            font-family: sans-serif;
+            font-size: 18px;"><span>Puntuación:</span> <span id="puntuacionElemento">0</span></p>
+            <canvas></canvas>
+            <!--Pantalla de inicio-->
+            <div id="pantallaInicio" style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('./img/pantalla.png');
+            z-index: 20;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;">
+            <div style="text-align: center">
+                <a href="./index.html" style="margin-right: 15px;">
+                    <img src="./img/home.png" alt="Boton Home" width="35px" height="35px">
+                </a>
+                <a href="./index.html">
+                    <img src="./img/share.png" alt="Boton Puntuaciones" width="35px" height="35px">
+                </a>
+            <h1 style="color: white; margin-top: 5px;">Invasores Dentales</h1>
+            <h2 style="color: white;">Objetivo</h3>
+            <p style="color: white;">¡Las bacterias intentan entrar en tu boca! ¡Intenta eliminar la mayor cantidad de invasores que puedas!</p>
+            <h2 style="color: white;">Instrucciones de Juego</h2>
+            <h3 style="color: white;">Controles</h3>
+            <p style="color: white;">Manten presionada la tecla "A" para moverte a la izquierda.</p>
+            <p style="color: white;">Manten presionada la tecla "D" para moverte a la derecha.</p>
+            <p style="color: white;">Presiona la barra espaciadora para realizar un disparo.</p>
+            <h3 style="color: white;">Consejos</h3>
+            <p style="color: white;">Dispara a las bombas azules para que exploten cerca de los invasores.</p>
+            <p style="color: white;">Dispara al PowerUp amarillo para usar una ametralladora durante un tiempo corto.</p>
+            <p style="color: white;">Presiona la tecla "P" para pausar el juego.</p>
+            <!--Boton-->
+            <div id="botonInicio" style="cursor: pointer; position: relative; display: inline-block;">
+                <img src="./img/boton.png" alt="Boton Inicio">
+                <span style="position: absolute; color:white; top: 50%; transform: translate(-50%, -50%); left: 50%;">Iniciar</span>
+            </div>
+            </div>
+            </div>
+            <!--Pantalla de pausa-->
+            <div id="pantallaPausa" style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('./img/pantalla.png');
+            z-index: 20;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;">
+            <div style="text-align: center;">
+                <a href="./index.html" style="margin-right: 15px;">
+                    <img src="./img/home.png" alt="Boton Home" width="35px" height="35px">
+                </a>
+                <a href="./index.html">
+                    <img src="./img/share.png" alt="Boton Puntuaciones" width="35px" height="35px">
+                </a>
+            <h1 style="color: white;">Juego Pausado</h1>
+            <h2 style="color: white;">Instrucciones de Juego</h2>
+            <h3 style="color: white;">Controles</h3>
+            <p style="color: white;">Manten presionada la tecla "A" para moverte a la izquierda.</p>
+            <p style="color: white;">Manten presionada la tecla "D" para moverte a la derecha.</p>
+            <p style="color: white;">Presiona la barra espaciadora para realizar un disparo.</p>
+            <h3 style="color: white;">Consejos</h3>
+            <p style="color: white;">Dispara a las bombas azules para que exploten cerca de los invasores.</p>
+            <p style="color: white;">Dispara al PowerUp amarillo para usar una ametralladora durante un tiempo corto.</p>
+            <p style="color: white;">Presiona la tecla "P" o el botón para despausar y continuar jugando.</p>
+            <!--Boton-->
+            <div id="botonReanudar" style="cursor: pointer; position: relative; display: inline-block;">
+                <img src="./img/boton.png" alt="Boton Reanudar">
+                <span style="position: absolute; color:white; top: 50%; transform: translate(-50%, -50%); left: 50%;">Continuar</span>
+            </div>
+            </div>
+            </div>
+            <!--Pantalla de reinicio-->
+            <div id="pantallaReinicio" style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('./img/pantalla.png');
+            z-index: 20;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;">
+            <div style="text-align: center;">
+                <a href="./index.html" style="margin-right: 15px;">
+                    <img src="./img/home.png" alt="Boton Home" width="35px" height="35px">
+                </a>
+                <a href="./index.html">
+                    <img src="./img/share.png" alt="Boton Puntuaciones" width="35px" height="35px">
+                </a>
+            <h1 style="color: white; font-size: 24px;">¡Fin del juego!</h1>
+            <h1 id="puntuacionFinal" style="color: white; margin: 0; font-size: 48px;">0</h1>
+            <p style="color: white; margin-top: 0;">Puntos</p>
+            <p style="color: white;">¡Puedes superarlo!</p>
+            <p style="color: white;">Presiona el botón para reiniciar y empezar de nuevo.</p>
+            <!--Boton-->
+            <div id="botonReiniciar" style="cursor: pointer; position: relative; display: inline-block;">
+                <img src="./img/boton.png" alt="Boton Reiniciar">
+                <span style="position: absolute; color:white; top: 50%; transform: translate(-50%, -50%); left: 50%;">Reiniciar</span>
+            </div>
+            </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./audio.js"></script>
+        <script src="./js/util.js"></script>
+        <script src="./js/classes/Fondo.js"></script>
+        <script src="./js/classes/Jugador.js"></script>
+        <script src="./js/classes/Proyectil.js"></script>
+        <script src="./js/classes/Particula.js"></script>
+        <script src="./js/classes/InvasorProyectil.js"></script>
+        <script src="./js/classes/Invasor.js"></script>
+        <script src="./js/classes/Grid.js"></script>
+        <script src="./js/classes/Bomba.js"></script>
+        <script src="./js/classes/PowerUp.js"></script>
+        <script src="./videojuego.js"></script>
+    </body>
+</html>
